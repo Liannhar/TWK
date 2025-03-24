@@ -32,4 +32,4 @@ set(MY_FILES
         Random/Random.h
 )
 add_executable(TWK ${MY_FILES})
-target_link_libraries(TWK  PRIVATE ${SDL2_LIBRARIES} SDL2_ttf::SDL2_ttf)
+target_link_libraries(TWK  PRIVATE SDL2::SDL2main SDL2::SDL2 SDL2_ttf::SDL2_ttf)
