@@ -1,5 +1,4 @@
 #include <iostream>
-#include <SDL_render.h>
 #include <SDL_ttf.h>
 #include "GameMode.h"
 #include "../Figure/Rectangle.h"
@@ -13,10 +12,12 @@ GameMode::GameMode(SDL_Window *newWindow) {
     random = new Random(this);
 }
 
+
 void GameMode::BeginPlay() {
     if (!window) {
         printf("Window is null");
     }
+
 
     gRenderer = SDL_CreateRenderer(window, -1, SDL_RENDERER_ACCELERATED);
     BlockGameSizes();
@@ -101,7 +102,6 @@ void GameMode::StartGame() {
 void GameMode::StopGame() {
     currentState = States::EndGame;
 }
-
 
 
 void GameMode::DrawStartGame() {

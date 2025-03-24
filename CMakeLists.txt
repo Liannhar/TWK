@@ -1,7 +1,6 @@
 cmake_minimum_required(VERSION 3.5)
 project(TWK)
 set(CMAKE_CXX_STANDARD 17)
-
 set(SDL2_PATH "${CMAKE_SOURCE_DIR}/SDL2-2.26.0")
 list(APPEND CMAKE_PREFIX_PATH "${SDL2_PATH}")
 
