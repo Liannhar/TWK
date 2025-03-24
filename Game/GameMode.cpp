@@ -17,9 +17,8 @@ void GameMode::BeginPlay() {
     if (!window) {
         printf("Window is null");
     }
-
-
     gRenderer = SDL_CreateRenderer(window, -1, SDL_RENDERER_ACCELERATED);
+
     BlockGameSizes();
     SDL_Rect fillRect = {posBlockX, posBlockY, blockSizeX, blockSizeY};
     SDL_SetRenderDrawColor(gRenderer, 0xFF, 0xFF, 0xFF, 0xFF);
@@ -29,7 +28,7 @@ void GameMode::BeginPlay() {
     SDL_RenderSetClipRect(gRenderer, nullptr);
 
     WindowSize size = GetWindowSize();
-    //buttons draw
+
     startButton = new Button("Start", this);
     startButton->Draw(size.width * 6 / 8, size.height / 8, size.width / 18);
     stopButton = new Button("Stop", this);
@@ -94,8 +93,8 @@ void GameMode::Tick() {
 
 
 void GameMode::StartGame() {
-    currentState = States::Game;
     startTime = SDL_GetTicks();
+    currentState = States::Game;
 }
 
 
@@ -207,13 +206,13 @@ bool GameMode::CheckFiguresEndGamePosition() {
 }
 
 void GameMode::CheckWinState() {
-    int summ = 0;
+    int sum = 0;
     for (auto &figure: figures) {
-        summ += figure[figure.size() / 2]->GetWinCount();
+        sum += figure[figure.size() / 2]->GetWinCount();
     }
 
-    if (summ >= winPriceRequired) {
-        int win = 100 * summ / winPriceRequired;
+    if (sum >= winPriceRequired) {
+        int win = 100 * sum / winPriceRequired;
         std::string text = std::to_string(win) + "$";
         SDL_SetRenderDrawColor(gRenderer, 0xFF, 0xFF, 0xFF, 0xFF);
         SDL_RenderDrawLine(gRenderer, posBlockX, posBlockY + blockSizeY / 2, posBlockX + blockSizeX,
